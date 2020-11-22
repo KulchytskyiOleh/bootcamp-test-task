@@ -11,17 +11,19 @@ body {
   font-style: italic;
   color: darkblue;
 }
-.wrapper {
-  display: block;
-  position: relative;
+#wrapper {
   margin: 15px 25px;
   padding: 5px;
   height: 900px;
-  width: auto;
+  width: 900px;
   background-color: #ffffff;
   border: 1px solid #0000ff;
 }
 
+#image {
+  position: absolute;
+  display: none;
+}
 #image1 {
   position: absolute;
   display: none;

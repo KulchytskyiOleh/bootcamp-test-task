@@ -4,7 +4,9 @@ randomImg.addEventListener("click", randomImgTimer, false)
 
 randomImgPos.addEventListener("click", randomImgPosTimer, false)
 
-/* let wrapper = document.getElementById('wrapper') */
+randImgInRandPos.addEventListener("click", randomImgInRandPosTimer, false)
+
+let wrapper = document.querySelector('#wrapper')
 
 // let imagess = ["https://images.pexels.com/photos/1451074/pexels-photo-1451074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=450&w=560"]
 
@@ -24,9 +26,12 @@ function showImges() {
     return output;
 }
 
-/* wrapper.onmousedown = () => {
+/* 
+wrapper.onmousedown = () => {
     setTimeout(getRandomImg, 3000)
-} */
+}
+ */
+
 function randomImgTimer() {
     function getRandomImg() {
         let rand = (img) => {
@@ -40,7 +45,7 @@ function randomImgTimer() {
     setInterval(getRandomImg, 3000)
 }
 
-/* function getRandomImg() {
+/* function randomImgPosTimer() {
     let rand = (img) => {
         let rand = Math.floor(Math.random() * img.length);
         return img[rand];
@@ -53,8 +58,14 @@ function randomImgTimer() {
 function randomImgPosTimer() {
 
     picture = document.getElementById('image1');
-    spaceW = screen.width - picture.width;
-    spaceH = screen.height - picture.height;
+    let wrapperWidth = wrapper.offsetWidth;
+    let wrapperHeight = wrapper.offsetHeight;
+    spaceW = wrapperWidth - picture.width;
+    spaceH = wrapperHeight - picture.height;
+
+
+    console.log(screen.width, screen.height, 'screen')
+    console.log(wrapperWidth, wrapperHeight, 'wrapper')
 
     function moveImg() {
         picture.style.top = Math.round(Math.random() * spaceW) + "px";
@@ -62,4 +73,33 @@ function randomImgPosTimer() {
         picture.style.display = "block"
     }
     setInterval(moveImg, 1000);
+}
+
+
+function randomImgInRandPosTimer() {
+
+    function getRandomImg() {
+        let rand = (img) => {
+            let rand = Math.floor(Math.random() * img.length);
+            return img[rand];
+        }
+        let result = `<img src="${rand(img)}" id="image"/>`
+        document.getElementById('result').innerHTML = result;
+
+        console.log(result, 'result')
+        picture = document.getElementById('image');
+        console.log(picture, 'picture')
+
+        spaceW = screen.width - picture.width;
+        spaceH = screen.height - picture.height;
+
+        console.log(screen.width, picture.width)
+        console.log(screen.height, picture.height)
+
+        picture.style.top = Math.round(Math.random() * spaceW) + "px";
+        picture.style.left = Math.round(Math.random() * spaceH) + "px";
+        picture.style.display = "block"
+        return picture;
+    }
+    setInterval(getRandomImg, 1000);
 }
